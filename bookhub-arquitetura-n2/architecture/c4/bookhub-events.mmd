@@ -1,0 +1,15 @@
+C4Context
+  title BookHub — Contexto com comunicação orientada a eventos
+  Person(reader, "Leitor/Autor", "Publica, lê e interage com livros")
+  System(bookhub, "BookHub", "Catálogo digital, leitura e comunidade")
+  System_Ext(mysql, "MySQL", "Persistência transacional")
+  System_Ext(broker, "Event Broker", "RabbitMQ/AMQP")
+  System_Ext(notification, "Notification Worker", "Notificações assíncronas")
+  System_Ext(search, "Search Projection", "Índice de busca/feed")
+  System_Ext(analytics, "Analytics Worker", "Métricas de uso")
+  Rel(reader, bookhub, "Usa", "HTTPS/JSON")
+  Rel(bookhub, mysql, "Lê e grava", "Sequelize/MySQL")
+  Rel(bookhub, broker, "Publica eventos", "AMQP")
+  Rel(broker, notification, "Entrega eventos", "AMQP")
+  Rel(broker, search, "Entrega eventos", "AMQP")
+  Rel(broker, analytics, "Entrega eventos", "AMQP")

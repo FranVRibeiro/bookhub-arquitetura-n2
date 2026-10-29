@@ -1,0 +1,17 @@
+C4Container
+  title BookHub — Contêineres e camada de comunicação
+  Person(user, "Leitor/Autor")
+  Container(front, "Frontend Vue", "Vue 3, Router, Pinia", "Interface e estado de sessão")
+  Container(api, "BookHub API", "Express", "Casos de uso HTTP e autorização")
+  Container(domain, "Domain/Application", "JavaScript", "Agregados, casos de uso e portas")
+  Container(outbox, "Outbox Relay", "Node worker", "Publica eventos pendentes")
+  ContainerDb(db, "MySQL", "MySQL", "Agregados e outbox_events")
+  ContainerQueue(queue, "Event Broker", "RabbitMQ/AMQP", "Entrega de eventos")
+  Container(worker, "Workers", "Node consumers", "Busca, notificações e analytics")
+  Rel(user, front, "Usa", "HTTPS")
+  Rel(front, api, "Chama", "JSON/REST")
+  Rel(api, domain, "Invoca", "casos de uso")
+  Rel(domain, db, "Persiste", "ports/adapters")
+  Rel(domain, outbox, "Registra evento", "outbox_events")
+  Rel(outbox, queue, "Publica", "AMQP")
+  Rel(queue, worker, "Entrega", "AMQP")
