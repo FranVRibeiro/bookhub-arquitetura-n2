@@ -4,9 +4,6 @@ Este repositório contém a proposta arquitetural do BookHub para a avaliação 
 
 ## Entregáveis
 
-- `docs/avaliacao-n2-bookhub.md`: documento completo que pode ser convertido para PDF.
-- `docs/guia-estudo-apresentacao.md`: roteiro de estudo e defesa oral.
-- `docs/guia-publicacao-github.md`: passo a passo para publicar este repositório e os projetos Web.
 - `architecture/ddd/`: organização proposta para DDD/Arquitetura Hexagonal.
 - `architecture/c4/`: diagramas C4 e decisões da camada de mensageria.
 - `architecture/events/`: catálogo de eventos de domínio e integração.
